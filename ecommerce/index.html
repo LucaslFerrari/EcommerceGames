@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Jogos de Tabuleiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Menu de Navegação -->
+<nav>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cart.html">Carrinho</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+    </ul>
+    <a href="index.html"><img src="assets/logo.png" alt="Logo" style="height: 50px;"></a>
+</nav>
+
+<!-- Sidenav (Menu lateral de filtros) -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h3 class="filtro">Filtros</h3>
+    <button onclick="filterCategory('RPG')">RPG</button>
+    <button onclick="filterCategory('Aventura')">Aventura</button>
+    <button onclick="filterCategory('Cooperativo')">Cooperativo</button>
+    <button onclick="filterCategory('Competitivo')">Competitivo</button>
+    <button onclick="filterCategory('4 jogadores')">4 Jogadores</button>
+    <button onclick="resetFilters()">Todos</button>
+</div>
+
+<div id="main">
+    <div class="banner">
+        <h2>Ofertas Imperdíveis!</h2>
+    </div>
+
+    <div id="product-list" class="products">
+        <!-- Jogos serão renderizados aqui -->
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Jogos de Tabuleiro</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

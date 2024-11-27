@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <span></span>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cart.html">Carrinho</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+    </ul>
+    <a href="index.html"><img src="assets/logo.png" alt="Logo" style="height: 50px;"></a>
+</nav>
+
+<!-- Carrinho -->
+<div class="cart">
+    <h2>Seu Carrinho</h2>
+    <div id="cart-items"></div>  <!-- Os itens do carrinho serão exibidos aqui -->
+    <h3>Total: R$ <span id="total-amount">0.00</span></h3>  <!-- O total da compra será exibido aqui -->
+    
+    <!-- Botão para limpar o carrinho -->
+    <button onclick="clearCart()">Limpar Carrinho</button>
+
+    <a href="checkout.html"><button>Finalizar Compra</button></a>
+</div>
+
+
+
+<footer>
+    <p>&copy; 2024 Jogos de Tabuleiro</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
