@@ -15,18 +15,37 @@
       <li class="topo-carrinho"><a href="cart.html">Carrinho</a></li>
       <li class="topo-checkout"><a href="checkout.html">Checkout</a></li>
     </ul>
-    <a href="index.html"><img src="assets/ecommercerGames.png" alt="Logo" style="height: 50px;"></a>
+    <a href="index.html"><img src="assets/ecommercerGames.png" alt="Logo" style="height: 80px;"></a>
 </nav>
 
 <div class="checkout">
   <form>
-    <h2 class="text-buy">Finalizar Compra</h2>
-        <input type="text" placeholder="Nome" required>
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Endereço" required>
-        <input type="text" id="credit-card" placeholder="Número do Cartão de Crédito" maxlength="19" required>
-        <button type="submit">Finalizar Compra</button>
-    </form>
+    <h2>Finalizar Compra</h2>
+    
+    <!-- Informações Pessoais -->
+    <input type="text" placeholder="Nome Completo" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="telefone" placeholder="Número de Contato" maxlength="15"  required pattern="\d{10,11}" title="Digite um número de telefone válido com 10 ou 11 dígitos">
+    
+    <!-- Informações do Cartão -->
+    <input type="text" placeholder="Nome no Cartão" required>
+    <input type="text" id="card-number" placeholder="Número do Cartão" maxlength="19" required pattern="\d{4}-\d{4}-\d{4}-\d{4}" title="Use o formato 1234-5678-9123-4567">
+    <div class="card-row">
+      <input type="month" placeholder="Data de Expiração" required>
+      <input type="text" id="card-cvv" placeholder="CVV" maxlength="3" required pattern="\d{3}" title="O CVV contém 3 dígitos">
+    </div>
+    
+    <!-- Endereço -->
+    <input type="text" placeholder="Estado" required>
+    <input type="text" placeholder="Cidade" required>
+    <input type="text" placeholder="Bairro" required>
+    <input type="text" placeholder="Rua" required>
+    <input type="text" id="cep" placeholder="CEP" maxlength="9" pattern="\d{5}-\d{3}" title="Digite o CEP no formato 12345-678">
+    <input type="text" placeholder="Ponto de Referência" required>
+
+    <!-- Botão -->
+    <button type="submit">Finalizar Compra</button>
+</form>
 </div>
 
 <footer>

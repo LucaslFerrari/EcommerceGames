@@ -1,13 +1,13 @@
 // Produtos fictícios
 const products = [
-    { id: 1, name: "Tikal", category: "Aventura", price: 100, img: "assets/images/jogo1.jpg"},
-    { id: 2, name: "Gloomhaven", category: "RPG", price: 150, img: "assets/images/jogo2.jpg" },
-    { id: 3, name: "Forbidden Island", category: "Cooperativo", price: 120, img: "assets/images/jogo3.jpg" },
-    { id: 4, name: "Catan", category: "Competitivo", price: 80, img: "assets/images/jogo4.jpg" },
-    { id: 5, name: "Codenames", category: "4 jogadores", price: 110, img: "assets/images/jogo5.jpg" },
-    { id: 6, name: "Mansions of Madness", category: "Aventura", price: 100, img: "assets/images/jogo6.jpg" },
-    { id: 7, name: "Descent: Journeys in the Dark", category: "RPG", price: 130, img: "assets/images/jogo7.jpg" },
-    { id: 8, name: "Pandemic", category: "Cooperativo", price: 140, img: "assets/images/jogo8.jpg" }
+    { id: 1, name: "Tikal", category: "Aventura", price: 100, img: "assets/images/tikal.png"},
+    { id: 2, name: "Gloomhaven", category: "RPG", price: 150, img: "assets/images/Gloomhaven.jpg" },
+    { id: 3, name: "Forbidden Island", category: "Cooperativo", price: 120, img: "assets/images/forbidden-island.png" },
+    { id: 4, name: "Catan", category: "Competitivo", price: 80, img: "assets/images/catan.png" },
+    { id: 5, name: "Codenames", category: "4 jogadores", price: 110, img: "assets/images/codenames.png" },
+    { id: 6, name: "Mansions of Madness", category: "Aventura", price: 100, img: "assets/images/mansions-of-madness.jpg" },
+    { id: 7, name: "Descent: Journeys in the Dark", category: "RPG", price: 130, img: "assets/images/descent-journeys-in-the-dark.jpg" },
+    { id: 8, name: "Pandemic", category: "Cooperativo", price: 140, img: "assets/images/pandemic.jpg" }
 ];
 
 // Função para filtrar os produtos pela categoria selecionada
@@ -33,7 +33,7 @@ function renderProducts(filteredProducts) {
             <img src="${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
             <h4>Categoria: ${product.category}</h4>
-            <p>Preço: R$ ${product.price}</p>
+            <p><b>Preço: R$ ${product.price}</b></p>
             <button class="adicionar-carrinho" onclick="addToCart(${product.id})">Adicionar ao Carrinho</button>`;
         productList.appendChild(productItem);
     });
@@ -50,10 +50,13 @@ function loadCart() {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
       cartItem.innerHTML = `
-          <p>${product.img}</p>
-          <p>${product.name}</p>
-          <p>R$ ${product.price}</p>
-          <button class="remove-button" onclick="removeFromCart(${product.id})">X</button>
+          <img src="${product.img}" alt="${product.name}" class="cart-item-img">
+          <div class="cart-item-details">
+            <p><b>Nome:</b> ${product.name}</p>
+            <p><b>Categoria:</b> ${product.category}</p>
+            <p><b>Preço: R$${product.price}</b></p>
+            <button class="remove-button" onclick="removeFromCart(${product.id})">X</button>
+          </div>
       `;
       cartItemsContainer.appendChild(cartItem);
       total += product.price;
@@ -65,10 +68,9 @@ function loadCart() {
 // Função para adicionar o produto ao carrinho
 function addToCart(productId) {
   const product = products.find(p => p.id === productId);
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];  // Carregar carrinho existente ou criar um novo
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
   cart.push(product);
   
-  // Armazenar carrinho atualizado no localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
 
   showNotification(`Você adicionou ${product.name} ao carrinho.`);
@@ -86,19 +88,20 @@ function updateCart() {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
 
-      // Cria o conteúdo do item
       cartItem.innerHTML = `
-          <p>${product.img}</p>
-          <p>${product.name}</p>
-          <p>R$ ${product.price}</p>
-          <button class="remove-button" onclick="removeFromCart(${product.id})">X</button>
+          <img src="${product.img}" alt="${product.name}" class="cart-item-img">
+          <div class="cart-item-details">
+            <p><b>Nome:</b> ${product.name}</p>
+            <p><b>Categoria:</b> ${product.category}</p>
+            <p><b>Preço: R$${product.price}</b></p>
+            <button class="remove-button" onclick="removeFromCart(${product.id})">X</button>
+          </div>
       `;
 
       cartItemsContainer.appendChild(cartItem);
       total += product.price;
   });
 
-  // Atualiza o valor total no carrinho
   document.getElementById("total-amount").innerText = total.toFixed(2);
 }
 
@@ -110,37 +113,23 @@ function removeFromCart(productId) {
   const product = cart.find(p => p.id === productId);
 
   if (product && product.quantity > 1) {
-      // Se o produto tiver mais de 1 quantidade, diminui a quantidade
       product.quantity -= 1;
-  } else {
-      // Se a quantidade for 1 ou menos, remove o item completamente
+  } else {   
       cart = cart.filter(p => p.id !== productId);
   }
 
-  // Atualiza o localStorage com o novo carrinho
   localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Atualiza a interface do carrinho
   showNotification(`Você removeu o ${product.name} do carrinho.`);
   updateCart();
 }
-
-// // Função para deletar os itens do carrinho
-// function removeFromCart(productId) {
-//   let cart = JSON.parse(localStorage.getItem("cart")) || [];  // Carregar carrinho existente ou criar um novo
-//   cart = cart.filter(product => product.id !== productId);  // Filtra o item e remove o produto com o id correspondente
-
-//   // Armazenar carrinho atualizado no localStorage
-//   localStorage.setItem("cart", JSON.stringify(cart));
-
-//   // Atualiza a lista de produtos exibida
-//   updateCart();
-// }
 
 // Função para renderizar todos os produtos inicialmente
 function renderAllProducts() {
     renderProducts(products);
 }
+document.addEventListener("DOMContentLoaded", function() {
+  renderAllProducts();
+});
 
 // Função para mostrar a notificação
 function showNotification(message) {
@@ -159,9 +148,27 @@ function showNotification(message) {
     }, 3000);
 }
 
+function applyPriceFilter() {
+  const filterValue = document.getElementById("price-filter").value;
+  let filteredProducts = [...products]; // Copiar todos os produtos inicialmente
 
+  if (filterValue === "asc") {
+      // Ordenar por menor preço
+      filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (filterValue === "desc") {
+      // Ordenar por maior preço
+      filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (filterValue === "greater100") {
+      // Filtrar produtos com preço maior que R$100
+      filteredProducts = filteredProducts.filter(product => product.price >= 100);
+  } else if (filterValue === "less100") {
+      // Filtrar produtos com preço menor que R$100
+      filteredProducts = filteredProducts.filter(product => product.price <= 100);
+  }
 
-  
+  // Renderizar os produtos filtrados
+  renderProducts(filteredProducts);
+}
 
 
 
@@ -195,13 +202,66 @@ function clearCart() {
 }
 
 //Função para o cartão de crédito
-const creditCardInput = document.getElementById("credit-card");
+const cardNumberInput = document.getElementById("card-number");
 
-creditCardInput.addEventListener("input", (e) => {
-  let value = e.target.value.replace(/\D/g, "");
-  value = value.substring(0, 16);
-  const formattedValue = value.match(/.{1,4}/g)?.join("-") || "";
-  e.target.value = formattedValue;
+cardNumberInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    value = value.replace(/(\d{4})(?=\d)/g, "$1-");
+    e.target.value = value;
+});
+
+// Função para o cartão CVV somente 3 números
+const cvvInput = document.getElementById("card-cvv");
+
+cvvInput.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/\D/g, "");
+});
+
+const cepInput = document.getElementById("cep");
+
+// Função para o CEP somente números e formatação certa
+cepInput.addEventListener("input", (e) => {
+    let cep = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+    if (cep.length > 5) {
+        cep = cep.slice(0, 5) + '-' + cep.slice(5, 8); // Adiciona o "-"
+    }
+    e.target.value = cep; // Atualiza o valor formatado
+});
+
+const telefoneInput = document.getElementById("telefone");
+
+// Função para o Telefone aceite somente números e formatação certa
+telefoneInput.addEventListener("input", (e) => {
+    let telefone = e.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+    if (telefone.length > 0) {
+        telefone = telefone.slice(0, 11); // Limita o número a 11 dígitos
+    }
+    if (telefone.length >= 2) {
+        telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`; // Adiciona o DDD
+    }
+    if (telefone.length > 9) {
+        telefone = `${telefone.slice(0, 9)}-${telefone.slice(9)}`; // Adiciona o traço
+    }
+    e.target.value = telefone; // Atualiza o valor formatado
+});
+
+// Função para o Email verificar se está correto com @hotmail/gmail/outlook
+const emailInput = document.getElementById("email");
+const emailError = document.getElementById("email-error");
+
+emailInput.addEventListener("input", () => {
+    const email = emailInput.value.trim();
+    const validDomains = ["gmail.com", "hotmail.com", "outlook.com"];
+    
+    // Verifica se o email possui "@" e um domínio válido
+    const domain = email.split("@")[1];
+    if (domain && validDomains.includes(domain)) {
+        emailError.style.display = "none"; // Oculta a mensagem de erro
+        emailInput.setCustomValidity(""); // Remove o estado de erro
+    } else {
+        emailError.style.display = "block"; // Exibe a mensagem de erro
+        emailInput.setCustomValidity("Domínio inválido."); // Define o estado de erro
+    }
 });
 
 // Função para o acessibilidade de texto

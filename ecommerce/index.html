@@ -10,13 +10,13 @@
 
 <!-- Menu de Navegação -->
 <nav>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <span style="font-size:30px;cursor:pointer;color: white;" onclick="openNav()">&#9776;</span>
     <ul>
         <li class="topo-inicio"><a href="index.html">Início</a></li>
         <li class="topo-carrinho"><a href="cart.html">Carrinho</a></li>
         <li class="topo-checkout"><a href="checkout.html">Checkout</a></li>
     </ul>
-    <a href="index.html"><img src="assets/ecommercerGames.png" alt="Logo" style="height: 50px;"></a>
+    <a href="index.html"><img src="assets/ecommercerGames.png" alt="Logo" style="height: 80px;"></a>
 </nav>
 
 <!-- Sidenav (Menu lateral de filtros) -->
@@ -35,6 +35,16 @@
     <div class="banner">
         <h2>Ofertas Imperdíveis!</h2>
     </div>
+    <div class="filter-container">
+      <label for="price-filter">Ordenar por:</label>
+      <select id="price-filter" onchange="applyPriceFilter()">
+          <option value="">Todos</option>
+          <option value="desc">Maior valor ao  valor menor</option>
+          <option value="asc">Menor valor ao valor maior</option>
+          <option value="greater100">Maior que R$100</option>
+          <option value="less100">Menor que R$100</option>
+      </select>
+  </div>
 
     <div id="product-list" class="products">
         <!-- Jogos serão renderizados aqui -->
