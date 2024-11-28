@@ -17,6 +17,33 @@ nav {
 
 nav ul {
     list-style-type: none;
+    font-size:30px
+}
+.topo-inicio, .topo-carrinho, .topo-checkout{
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.topo-inicio:hover, .topo-carrinho:hover, .topo-checkout:hover {
+  animation: vibrate 0.5s linear;
+}
+
+@keyframes vibrate {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
 }
 
 nav ul li {
@@ -45,8 +72,9 @@ nav ul li a {
 }
 .sidenav .filtro {
     color: #f1f1f1;
-    font-size: 30px;
-
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
     }
 .sidenav a {
     padding: 10px 15px;
@@ -67,6 +95,34 @@ nav ul li a {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.button-filtros {
+  width: 80%;
+  padding: 10px 20px;
+  margin: 10px 25px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #34495e;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.button-filtros:hover {
+  background-color: #1abc9c;
+}
+
+/* Ajuste para a rolagem */
+.sidenav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+  background-color: #1abc9c;
+  border-radius: 10px;
 }
 
 /* Conteúdo principal ajustado para o sidenav */
@@ -107,6 +163,17 @@ nav ul li a {
 .product-item p {
     font-size: 1em;
     color: #666;
+}
+
+.adicionar-carrinho{
+  font-size: 20px;
+}
+
+.banner{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+
 }
 
 .product-item button {
@@ -174,6 +241,133 @@ nav ul li a {
 
 .cart-item p {
     margin: 0;
+}
+
+.limpar-carrinho {
+  width: 200px;
+  padding: 12px; 
+  background-color: #e3342f;
+  color: white; 
+  border: none; 
+  border-radius: 4px;
+  font-size: 16px; 
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.limpar-carrinho:hover {
+  background-color: #cc1f1a;
+}
+
+.finalizar-compra{
+  width: 200px;
+  padding: 12px; 
+  background-color: #2c83ec;
+  color: white; 
+  border: none; 
+  border-radius: 4px;
+  font-size: 16px; 
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.finalizar-compra:hover {
+  background-color: #1172ae;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  color: darkred;
+}
+
+
+/* Layout Checkout  */
+.text-buy {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+form {
+  background: #ffffff;
+  padding: 2rem;
+  padding: 45px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 22px;
+  transition: border-color 0.3s;
+  
+}
+
+form button {
+  width: 106%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+form button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Botão de acessibilidade para alteração do texto*/
+.font-resizer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.font-resizer button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.font-resizer button:hover {
+  background-color: #0056b3;
+}
+
+.font-resizer button:focus {
+  outline: 2px solid #0056b3;
 }
 
 /* Rodapé */

@@ -11,26 +11,31 @@
 <nav>
     <span></span>
     <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="cart.html">Carrinho</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
+      <li class="topo-inicio"><a href="index.html">Início</a></li>
+      <li class="topo-carrinho"><a href="cart.html">Carrinho</a></li>
+      <li class="topo-checkout"><a href="checkout.html">Checkout</a></li>
     </ul>
-    <a href="index.html"><img src="assets/logo.png" alt="Logo" style="height: 50px;"></a>
+    <a href="index.html"><img src="assets/ecommercerGames.png" alt="Logo" style="height: 50px;"></a>
 </nav>
 
 <div class="checkout">
-    <h2>Finalizar Compra</h2>
-    <form>
+  <form>
+    <h2 class="text-buy">Finalizar Compra</h2>
         <input type="text" placeholder="Nome" required>
         <input type="email" placeholder="Email" required>
         <input type="text" placeholder="Endereço" required>
-        <input type="text" placeholder="Cartão de Crédito" required>
+        <input type="text" id="credit-card" placeholder="Número do Cartão de Crédito" maxlength="19" required>
         <button type="submit">Finalizar Compra</button>
     </form>
 </div>
 
 <footer>
     <p>&copy; 2024 Jogos de Tabuleiro</p>
+    <div class="font-resizer">
+      <button onclick="adjustFontSize('increase')" aria-label="Aumentar fonte">A+</button>
+      <button onclick="adjustFontSize('decrease')" aria-label="Diminuir fonte">A-</button>
+      <button onclick="adjustFontSize('reset')" aria-label="Redefinir fonte">A</button>
+    </div>
 </footer>
 
 <script src="script.js"></script>
